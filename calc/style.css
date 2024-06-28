@@ -7,7 +7,7 @@ body {
 	justify-content: center; 
 	height: 50vh;
 	overflow: scroll; /* Prevent the body from scrolling */ 
-}
+} 
 
 #calculator { 
 	background-color: #ffffff; 
@@ -18,7 +18,6 @@ body {
 	text-align: center; 
 	overflow-y: visible; /* Enable scrolling within the calculator */
     max-height: 7em; /* Adjust max-height to fit within the viewport */
-
 } 
 
 button { 
@@ -27,7 +26,7 @@ button {
 	background-color: #0072be; 
 	color: #fff; 
 	border: none; 
-	border-radius: 50px; 
+	border-radius: 5px; 
 	cursor: pointer; 
 	font-size: 14px;
 	display: inline-block; /* Ensure buttons are inline-block */ 
