@@ -26,7 +26,7 @@ button {
 	background-color: #0072be; 
 	color: #fff; 
 	border: none; 
-	border-radius: 5px; 
+	border-radius: 50px; 
 	cursor: pointer; 
 	font-size: 14px;
 	display: inline-block; /* Ensure buttons are inline-block */ 
