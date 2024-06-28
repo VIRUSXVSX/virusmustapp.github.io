@@ -18,9 +18,9 @@ body {
 	text-align: center; 
 	overflow-y: visible; /* Enable scrolling within the calculator */
     max-height: 7em; /* Adjust max-height to fit within the viewport */
-	margin: 0 auto;
-	max-width: 600px; /* Optional: Adjust this value to control the width of the calculator */
-	text-align: center; /* Optional: Center align the text inside the calculator */
+	/*margin: 0 auto;*/
+	/*max-width: 600px; /* Optional: Adjust this value to control the width of the calculator */
+	/*text-align: center; /* Optional: Center align the text inside the calculator */
 } 
 
 button { 
