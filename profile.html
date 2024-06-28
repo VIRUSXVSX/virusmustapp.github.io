@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Page</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .circular-image {
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>User Profile</h2>
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="profilePic">Profile Picture:</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*" class="Visible">
+        <img id="preview" src="#" alt="Profile Picture Preview" class="circular-image hidden">
+        <button type="button" id="deletePic" class="btn btn-danger hidden">Delete Photo</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Profile</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const profileForm = document.getElementById('profileForm');
+      const profilePicInput = document.getElementById('profilePic');
+      const preview = document.getElementById('preview');
+      const deletePic = document.getElementById('deletePic');
+
+      // Handle image preview
+      profilePicInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+          deletePic.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Handle form submission
+      profileForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const profilePic = preview.src !== '#' ? preview.src : '';
+
+        const userProfile = {
+          name: name,
+          profilePic: profilePic
+        };
+
+        localStorage.setItem('userProfile', JSON.stringify(userProfile));
+        alert('Profile saved!');
+        window.location.href = 'index.html'; // Redirect to main page after saving
+      });
+
+      // Load saved profile
+      const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
+      if (savedProfile) {
+        document.getElementById('name').value = savedProfile.name;
+        if (savedProfile.profilePic) {
+          preview.src = savedProfile.profilePic;
+          preview.classList.remove('hidden');
+          deletePic.classList.remove('hidden');
+        }
+      }
+
+      // Handle delete profile picture
+      deletePic.addEventListener('click', function () {
+        preview.src = '#';
+        preview.classList.add('hidden');
+        deletePic.classList.add('hidden');
+      });
+
+      // Allow editing profile picture by clicking on the image
+      preview.addEventListener('click', function () {
+        profilePicInput.click();
+      });
+    });
+  </script>
+</body>
+</html>
