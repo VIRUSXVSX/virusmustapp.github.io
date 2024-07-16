@@ -6,6 +6,7 @@
   <title>User Profile Page</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  
   <style>
     .circular-image {
       border-radius: 50%;
@@ -16,6 +17,37 @@
     .hidden {
       display: none;
     }
+    
+      :root {
+        --background: white;
+        --color: #2b2b2b;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--color);
+      }
+
+      .darko {
+        --background: #2b2b2b;
+        --color: white;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #2b2b2b;
+          --color: white;
+        }
+      }
+
+      .light {
+        --background: white;
+        --color: #2b2b2b;
+      }
+    </style>
+
+
+    
   </style>
 </head>
 <body>

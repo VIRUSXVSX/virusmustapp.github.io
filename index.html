@@ -32,6 +32,7 @@
     .hidden {
       display: none;
     }
+
   </style>
   
 </head>
@@ -194,6 +195,22 @@
         }
       }
     });
+  </script>
+   <script>
+	// Function to redirect based on color scheme
+	function redirectToAppropriateSite() {
+	  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		// Redirect to the dark mode URL
+		window.location.href = "dark/index.html";
+	  }
+	}
+  
+	// Check color scheme preference on load
+	redirectToAppropriateSite();
+  
+	// Add an event listener to detect changes in color scheme preference
+	window.matchMedia('(prefers-color-scheme: dark)').addListener(redirectToAppropriateSite);
+	window.matchMedia('(prefers-color-scheme: light)').addListener(redirectToAppropriateSite);
   </script>
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
